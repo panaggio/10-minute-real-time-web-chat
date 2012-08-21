@@ -1,0 +1,27 @@
+{
+  "name" : "10-minute-real-time-web-chat",
+  "description": "A very small yet powerful example of a real time web chat using Node, Express and Faye.",
+  "version" : "0.0.0",
+  "keywords": [ "realtime", "webchat", "example" ],
+  "maintainers": [{
+    "name": "Ricardo Panaggio",
+    "email": "panaggio.ricardo@gmail.com"
+  }],
+  "contributors": [{
+    "name": "Ricardo Panaggio",
+    "email": "panaggio.ricardo@gmail.com"
+  }],
+  "bugs": "https://github.com/panaggio/10-minute-real-time-web-chat/issues",
+  "licenses": [{
+    "type": "AGPLv3",
+    "url": "https://www.gnu.org/licenses/agpl.html"
+  }],
+  "repositories": [{
+    "type": "git",
+    "url": "https://github.com/panaggio/10-minute-real-time-web-chat.git"
+  }],
+  "dependencies" : {
+    "express" : "3.0.0rc3",
+    "faye": "0.8.3"
+  }
+}

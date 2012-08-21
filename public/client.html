@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>10-minute realtime web chat</title>
+    <script src='http://code.jquery.com/jquery-1.8.0.min.js'></script>
+  </head>
+  <body>
+    <h1>Chat Client</h1>
+    <form action=''>
+      user_id: <input type='text' id='user-id' /><br/>
+      message: <textarea id='msg'></textarea>
+      <input type='button' value='Send' id='send' />
+    </form>
+    <div id='msgs'></div>
+
+    <script src='/javascripts/faye.js'></script>
+    <script>
+      var $userId = $('#user-id');
+      var $msg = $('#msg');
+      var $msgs = $('#msgs');
+
+      $('#send').on('click', null, function() {
+        var message = {
+          userId: $userId.val(),
+          message: $msg.val()
+        };
+
+        $.ajax({
+          type: 'POST',
+          url: 'http://localhost:8000/message',
+          data: message,
+          dataType: 'json'
+        });
+
+        $msg.val('');
+      });
+
+      var client = new Faye.Client('http://localhost:8001/');
+
+      client.subscribe('/chatroom', function(obj) {
+        $msgs.append('<p>' + obj.userId + ': ' + obj.message + '<\/p>');
+      });
+    </script>
+  </body>
+</html>
